@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import { connectMongooseDB } from "./configs/databases/mongoose.config";
 import { connectMySQLDB } from "./configs/databases/mysql.config";
 import app from "./app";
 
@@ -9,9 +8,8 @@ const PORT = process.env.PORT || 3000;
 
 Promise.all([
   connectMySQLDB.initialize(), // Connexion à MySQL
-  connectMongooseDB(),        // Connexion à MongoDB
 ]).then(() => {
-  console.log("Connected to MySQL and MongoDB!");
+  console.log("Connected to MySQL !");
 
   // Lancer le serveur
   app.listen(PORT, () => {

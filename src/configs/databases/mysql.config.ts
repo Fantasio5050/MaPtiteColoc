@@ -12,3 +12,4 @@ export const connectMySQLDB = new DataSource({
   entities: ["src/databases/mysql/*.ts"], // Entités de votre projet
   migrations: ["src/migrations/**/*.ts"], // Scripts de migration
 });
+
