@@ -1,22 +1,26 @@
 import { Repository } from "typeorm";
-import { UserEntity } from "../databases/mysql/user.entity";
-import { connectMySQLDB } from "../configs/databases/mysql.config";
-import { UserToCreateDTO } from "../types/user/dtos";
-import { userToCreateInput } from "../types/user/Inputs";
+import { Utilisateur } from "../models/user.entity";
+import { connectMySQLDB } from "../configs/mysql.config";
+import { CreateUserDto } from "../dtos/create-user.dto";
+import { userToCreateInput } from "../types/Inputs";
 
 export class UserRepository {
-  private userDB: Repository<UserEntity>;
+  private userDB: Repository<Utilisateur>;
 
   constructor() {
-    this.userDB = connectMySQLDB.getRepository(UserEntity);
+    this.userDB = connectMySQLDB.getRepository(Utilisateur);
   }
 
-  create(user: userToCreateInput): UserEntity {
+  create(user: userToCreateInput): Utilisateur {
     const newUser = this.userDB.create(user);
-    return newUser
+    return newUser;
   }
 
-  async save(user: UserEntity): Promise<UserEntity> {
+  async save(user: Utilisateur): Promise<Utilisateur> {
     return this.userDB.save(user);
+  }
+
+  async findByEmail(email: string): Promise<Utilisateur | null> {
+    return this.userDB.findOne({ where: { email } });
   }
 }

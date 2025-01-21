@@ -1,15 +1,15 @@
 import { Expose } from "class-transformer";
 import { IsNumber, IsString } from "class-validator";
-import { UserEntity } from "../../databases/mysql/user.entity";
+import { Utilisateur } from "../models/user.entity";
 
 export class UserPresenter {
   @Expose()
   @IsNumber()
-  id: UserEntity['id'];
+  id: Utilisateur['id'];
 
   @Expose()
   @IsString()
-  firstname: UserEntity['firstname'];
+  firstname: Utilisateur['prenom'];
 
   // à vous de jouer
   lastname: string;

@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { connectMySQLDB } from "./configs/databases/mysql.config";
+import { connectMySQLDB } from "./configs/mysql.config";
 import app from "./app";
 
 dotenv.config();
