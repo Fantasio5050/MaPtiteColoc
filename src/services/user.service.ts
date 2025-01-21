@@ -25,4 +25,8 @@ export class UserService {
     // ON RETOURNE L'UTILISATEUR CRÉÉ
     return savedUser;
   }
+
+  async getUserById(userId: number): Promise<Utilisateur | null> {
+    return this.userRepository.findById(userId);
+  }
 }
